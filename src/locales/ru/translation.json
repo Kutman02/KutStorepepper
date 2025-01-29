@@ -1,0 +1,19 @@
+{
+	"allProducts": "Все товары",
+	"allProductsDescription": "Просмотрите наш полный каталог товаров",
+	"FilterProducts": {
+		"filter": "Фильтр",
+		"Showing": "Показано",
+		"of": "из",
+		"product": "товаров",
+		"sortBy": "Сортировать по",
+		"sortByName": "По названию",
+		"priceLowToHigh": "Цена: по возрастанию",
+		"priceHighToLow": "Цена: по убыванию",
+		"search": "Поиск",
+		"searcht": "Введите название товара...",
+		"priceRange": "Диапазон цен",
+		"resetFilters": "Сбросить фильтры"
+	},
+	"addToCart": "В корзину"
+}

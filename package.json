@@ -1,0 +1,48 @@
+{
+	"name": "pepper",
+	"version": "0.2.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"check-types": "tsc --pretty --noEmit",
+		"check-format": "prettier --check .",
+		"check-lint": "eslint . --ext ts --ext tsx --ext js",
+		"format": "prettier --write .",
+		"test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
+		"prepare": "husky install",
+		"format:fix": "prettier --write --ignore-path .gitignore ."
+	},
+	"dependencies": {
+		"@next/font": "^13.4.5",
+		"@reduxjs/toolkit": "^1.9.5",
+		"@types/node": "20.2.5",
+		"@types/react-dom": "18.2.4",
+		"i18next": "^24.1.0",
+		"i18next-browser-languagedetector": "^8.0.2",
+		"i18next-http-backend": "^3.0.1",
+		"lucide-react": "^0.468.0",
+		"next": "13.4.4",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-i18next": "^15.1.4",
+		"react-redux": "^8.0.5",
+		"tailwindcss-scrollbar": "^0.1.0",
+		"typescript": "5.0.4"
+	},
+	"engines": {
+		"node": "^18.8.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.18",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.41.0",
+		"eslint-config-next": "^13.4.4",
+		"husky": "^8.0.3",
+		"postcss": "^8.4.31",
+		"prettier": "^2.8.8",
+		"tailwindcss": "^3.3.3"
+	}
+}

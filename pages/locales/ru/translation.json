@@ -1,0 +1,96 @@
+{
+	"404page": "Пусто",
+	"addToCart": "Добавить в корзину",
+	"itemAddedToCart": "Добавлен в корзину",
+	"errorAddingToCart": "Ошибка в добавлении",
+	"pleaseEnterYourNameAndEmail": "Введите свое имя и адрес электронной почты.",
+	"loginandregister": "Авторизация",
+	"email": "Email",
+	"password": "Пароль",
+	"login": "Войти",
+	"category": {
+		"masalas": "Масалы",
+		"chatMasalas": "Чат Масалы",
+		"pepperPowder": "Перечный порошок",
+		"cookingEssentials": "Кухонные принадлежности",
+		"refundOil": "Масло возврата"
+	},
+	"slider": {
+		"alt": "main slider"
+	},
+	"bannerMiddle": {
+		"alt": "banner middle"
+	},
+	"bannerBottom": {
+		"medium": {
+			"alt": "banner bottom medium"
+		},
+		"small": [
+			{
+				"alt": "banner bottom small 1"
+			},
+			{
+				"alt": "banner bottom small 2"
+			}
+		]
+	},
+	"sliderProducts": {
+		"bestOffer": {
+			"title": "Лучшие продукты"
+		},
+		"bestSelling": {
+			"title": "Лучше проданные продукты"
+		}
+	},
+	"FilterProducts": {
+		"filter": "Фильтр",
+		"sortBy": "Сортировать по",
+		"sortByName": "Названию",
+		"priceLowToHigh": "Цена: по возрастанию",
+		"priceHighToLow": "Цена: по убыванию",
+		"search": "Поиск",
+		"searcht": "Поиск товаров...",
+		"priceRange": "Диапазон цен",
+		"resetFilters": "Сбросить фильтры",
+		"Showing": "Показано",
+		"of": "из",
+		"product": "товаров",
+		"min": "От",
+		"max": "До",
+		"currency": "₽",
+		"noResults": "Товары не найдены",
+		"filterBy": "Фильтровать по",
+		"sortProducts": "Сортировка",
+		"clearAll": "Очистить всё"
+	},
+	"footert": {
+		"aboutUs": "О нас",
+		"aboutUsTitle": "Продажа специй — один из самых прибыльных видов домашнего бизнеса. Вот шаги, которые вам нужно пройти, чтобы начать свой собственный бизнес по продаже специй",
+		"contactUs": "Наши контакты"
+	},
+	"profilet": {
+		"thereisNoOrder": "Ваши заказы пусты",
+		"orderNumber": "Номер заказа: "
+	},
+	"userCart": {
+		"Products": "Товары",
+		"orderSummary": "Резюме заказа",
+		"orderSummarytitle": "Стоимость доставки, налоги и скидки будут рассчитаны при оформлении заказа.",
+		"country": "Страна",
+		"state": "Состояние",
+		"postalCode": "Почтовый Индекс",
+		"shoppingBasketIsEmpty": "Корзина пуста",
+		"continueShopping": "Продолжить покупки"
+	},
+	"totalt": "Всего:",
+	"userProfile": {
+		"user": "Мой профиль",
+		"orders": "Заказы",
+		"exit": "Выйти"
+	},
+	"productContent": {
+		"buyNow": "Купить сейчас",
+		"price": "цена:",
+		"productDescription": "Описание продукта "
+	}
+}

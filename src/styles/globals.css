@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-white text-gray-900 m-0;
+	}
+
+	*,
+	*::before,
+	*::after {
+		@apply box-border;
+	}
+}
+
+@layer components {
+	.container {
+		@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+	}
+
+	.range-slider::-webkit-slider-thumb {
+		@apply w-4 h-4 bg-primary rounded-full -mt-1;
+		-webkit-appearance: none;
+	}
+
+	.range-slider::-moz-range-thumb {
+		@apply w-4 h-4 bg-primary rounded-full border-0;
+	}
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+	@apply w-2.5 bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-gray-300 rounded-full;
+}

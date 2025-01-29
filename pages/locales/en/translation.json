@@ -1,0 +1,101 @@
+{
+	"404page": "Not Page",
+	"addToCart": "Add to Cart",
+	"itemAddedToCart": "Item added to cart",
+	"errorAddingToCart": "Error adding to cart",
+	"pleaseEnterYourNameAndEmail": "Please enter your email and password",
+	"loginandregister": "Login | Register ",
+	"email": "Email",
+	"password": "Password",
+	"login": "Login",
+	"category": {
+		"masalas": "Masalas",
+		"chatMasalas": "Chat Masalas",
+		"pepperPowder": "Pepper Powder",
+		"cookingEssentials": "Cooking Essentials",
+		"refundOil": "Refund Oil"
+	},
+	"slider": {
+		"alt": "main slider"
+	},
+	"bannerMiddle": {
+		"alt": "banner middle"
+	},
+	"bannerBottom": {
+		"medium": {
+			"alt": "banner bottom medium"
+		},
+		"small": [
+			{
+				"alt": "banner bottom small 1"
+			},
+			{
+				"alt": "banner bottom small 2"
+			}
+		]
+	},
+	"sliderProducts": {
+		"bestOffer": {
+			"title": "Best Offer Products"
+		},
+		"bestSelling": {
+			"title": "Best Selling Products"
+		}
+	},
+	"FilterProducts": {
+		"filter": "Filter",
+		"sortBy": "Sort by",
+		"sortByName": "Name",
+		"priceLowToHigh": "Price: Low to High",
+		"priceHighToLow": "Price: High to Low",
+		"search": "Search",
+		"searcht": "Search products...",
+		"priceRange": "Price Range",
+		"resetFilters": "Reset Filters",
+		"Showing": "Showing",
+		"of": "of",
+		"product": "products",
+		"min": "From",
+		"max": "To",
+		"currency": "$",
+		"noResults": "No products found",
+		"filterBy": "Filter by",
+		"sortProducts": "Sort",
+		"clearAll": "Clear All"
+	},
+	"footert": {
+		"aboutUs": "About us",
+		"aboutUsTitle": "Selling spices is one of the most profitable home businesses. There are steps you need to go through to start your own spice business.",
+		"contactUs": "Contact us"
+	},
+	"profilet": {
+		"thereisNoOrder": "There is no order",
+		"orderNumber": "order number : "
+	},
+	"userCart": {
+		"Products": "Products",
+		"orderSummary": "Order Summary",
+		"orderSummarytitle": "Shipping, taxes, and discounts will be calculated at checkout.",
+		"country": "Country",
+		"state": "State",
+		"postalCode": "Zip/Postal Code",
+		"shoppingBasketIsEmpty": "Shopping basket is empty",
+		"continueShopping": "Continue shopping"
+	},
+	"totalt": "Total:",
+	"userProfile": {
+		"user": "user",
+		"orders": "Orders",
+		"exit": "Exit"
+	},
+	"productContent": {
+		"buyNow": "Buy now",
+		"price": "Price:",
+		"exit": "Exit",
+		"productDescription": "Product Description "
+	},
+	"allProducts": {
+		"description": "Description"
+	},
+	"menu": "Menu"
+}
