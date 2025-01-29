@@ -1,3 +1,5 @@
+import productsJson from './data/products.json';
+import { StaticImageData } from 'next/image';
 import Barberry1 from 'public/images/products/Barberry1.png';
 import Barberry2 from 'public/images/products/Barberry2.png';
 import BlackCardamom1 from 'public/images/products/Black-Cardamom1.png';
@@ -47,7 +49,26 @@ import StarAnise1 from 'public/images/products/Star-Anise1.png';
 import StarAnise2 from 'public/images/products/Star-Anise2.png';
 import WhiteMustard1 from 'public/images/products/White-Mustard1.png';
 import WhiteMustard2 from 'public/images/products/White-Mustard2.png';
-export const productsData = [
+
+// Интерфейс для типизации данных продукта
+interface IProduct {
+	id: string;
+	title: string;
+	price: number;
+	score: number;
+	images: string[];
+	category: string;
+	summery: string;
+	description: {
+		title: string;
+		content: string;
+	}[];
+}
+
+// Экспортируем данные из JSON
+export const productsData: IProduct[] = productsJson.productsData;
+
+export const productsDataOriginal = [
 	{
 		id: 'sp-10',
 		title: 'barberry',

@@ -13,6 +13,8 @@ import { productsData } from './products';
 
 import { StaticImageData } from 'next/image';
 
+import homeDataJson from './data/homeData.json';
+
 type BannerType = {
 	link: StaticImageData;
 	alt: string;
@@ -20,12 +22,15 @@ type BannerType = {
 	height: number;
 };
 
-// Экспортируем объект homeData только с нужными данными
-export const homeData = {
+// Обновляем данные из JSON и добавляем список продуктов
+const homeData = {
+	...homeDataJson,
 	sliderProducts: {
 		bestOffer: {
-			title: 'Все товары',
-			list: productsData, // Показываем все товары вместо выборочных
+			...homeDataJson.sliderProducts.bestOffer,
+			list: productsData,
 		},
 	},
 };
+
+export { homeData };
