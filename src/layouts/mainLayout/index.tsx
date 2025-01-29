@@ -28,7 +28,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{' '}
 				{/* Оборачиваем приложение в провайдер Redux */}
 				<Header /> {/* Компонент шапки страницы */}
-				<main className='min-h-screen bg-gray-50'>{children}</main>
+				<main className='min-h-screen bg-gray-50 pt-20 md:pt-24'>{children}</main>
 				<Footer /> {/* Компонент футера */}
 			</Provider>
 		</div>
