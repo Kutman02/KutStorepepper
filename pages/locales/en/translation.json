@@ -92,7 +92,15 @@
 		"buyNow": "Buy now",
 		"price": "Price:",
 		"exit": "Exit",
-		"productDescription": "Product Description "
+		"productDescription": "Product Description ",
+		"feature1": "Natural Ingredients",
+		"feature2": "Unique Taste",
+		"feature3": "Premium Quality",
+		"feature4": "Convenient Package",
+		"featureDesc1": "100% natural ingredients with no additives",
+		"featureDesc2": "Signature spice blend recipe",
+		"featureDesc3": "Strict quality control at all stages",
+		"featureDesc4": "Aroma-lock packaging"
 	},
 	"allProducts": {
 		"description": "Description"

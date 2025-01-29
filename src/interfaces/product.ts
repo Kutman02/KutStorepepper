@@ -18,9 +18,6 @@ export interface ProductDataApiResponse {
 	// Цена продукта
 	price: number;
 
-	// Рейтинг продукта (например, на основе отзывов пользователей)
-	score: number;
-
 	// Массив изображений продукта
 	images: StaticImageData[]; // Список изображений с типом StaticImageData
 

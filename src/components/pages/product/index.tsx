@@ -1,12 +1,8 @@
 import Image from 'next/image'; // Импортируем компонент Image для отображения изображений в Next.js
 import { useRouter } from 'next/router'; // Импортируем useRouter для навигации между страницами
 import { useDispatch, useSelector } from 'react-redux'; // Импортируем хук useDispatch для отправки действий в Redux, useSelector для получения данных из Redux
-import Button from '@src/components/base/button'; // Импортируем компонент кнопки
 import { routes } from '@src/constants/routes'; // Импортируем константы с путями маршрутов
 import { postCartChange } from '@src/api/cart'; // Импортируем функцию для добавления товара в корзину
-import score from '@public/icons/score.png'; // Импортируем иконку для рейтинга товара
-import share from '@public/icons/share.png'; // Импортируем иконку для кнопки "поделиться"
-import interest from '@public/icons/interest.png'; // Импортируем иконку для добавления в избранное
 import ProductTabs from './productTabs'; // Импортируем компонент вкладок для отображения описания товара
 import { updateGlobalSlice } from '@src/store/globalSlice'; // Импортируем экшн для обновления состояния корзины
 import { useTranslation } from 'react-i18next'; // Импортируем хук для перевода текста
@@ -47,37 +43,123 @@ const ProductContent = ({ data }: { data: ProductData }) => {
 	};
 
 	return (
-		<div className='max-w-7xl mx-auto px-4 py-8'>
-			<div className='bg-white rounded-xl shadow-sm overflow-hidden'>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-8 p-6'>
-					{/* Изображение продукта */}
-					<div className='aspect-square relative rounded-lg overflow-hidden bg-gray-100'>
-						<Image src={data.images[0]} alt={data.title} fill className='object-cover' />
+		<div className='max-w-7xl mx-auto'>
+			{/* Основная информация о продукте */}
+			<div className='bg-white shadow-lg overflow-hidden'>
+				{/* Мобильный заголовок */}
+				<div className='p-4 lg:hidden bg-gradient-to-r from-amber-50 to-transparent'>
+					<h1 className='text-2xl font-bold text-gray-900'>{data.title}</h1>
+					<div className='h-1 w-16 bg-amber-500 mt-2'></div>
+				</div>
+
+				<div className='grid grid-cols-1 lg:grid-cols-2'>
+					{/* Левая колонка с изображением */}
+					<div className='relative p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-amber-50/30 via-transparent to-transparent'>
+						<div className='aspect-square relative overflow-hidden bg-white'>
+							<Image
+								src={data.images[0]}
+								alt={data.title}
+								fill
+								className='object-cover hover:scale-105 transition-transform duration-500'
+								sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+							/>
+						</div>
+						{/* Дополнительные изображения */}
+						{data.images.length > 1 && (
+							<div className='flex gap-3 mt-3 overflow-x-auto pb-2 scrollbar-hide'>
+								{data.images.map((img, idx) => (
+									<button
+										key={idx}
+										className='relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 overflow-hidden border-2 border-amber-200 hover:border-amber-400 transition-colors'>
+										<Image src={img} alt={`${data.title} ${idx + 1}`} fill className='object-cover' sizes='80px' />
+									</button>
+								))}
+							</div>
+						)}
 					</div>
 
-					{/* Информация о продукте */}
-					<div className='space-y-6'>
-						<div className='flex items-center justify-between'>
-							<div className='flex items-center gap-4'>
-								<div className='flex items-center gap-2'>
-									<Image src={score} alt='score' width={20} height={20} className='object-contain' />
-									<span className='text-sm text-gray-600'>4.5</span>
-								</div>
-								<Image src={interest} alt='interest' width={20} height={20} className='object-contain' />
+					{/* Правая колонка с информацией */}
+					<div className='p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-amber-50/50 via-transparent to-transparent'>
+						<div className='space-y-4 sm:space-y-6'>
+							{/* Десктопный заголовок */}
+							<div className='hidden lg:block'>
+								<h1 className='text-3xl font-bold text-gray-900 mb-2'>{data.title}</h1>
+								<div className='h-1 w-20 bg-amber-500'></div>
 							</div>
-							<Image src={share} alt='share' width={20} height={20} className='object-contain' />
-						</div>
 
-						<div>
-							<h1 className='text-2xl font-bold text-gray-900 mb-4'>{data.title}</h1>
-							<p className='text-gray-600'>{data.summery}</p>
-						</div>
+							{/* Цена для мобильных */}
+							<div className='flex items-center justify-between lg:hidden'>
+								<div className='flex items-baseline gap-1'>
+									<span className='text-2xl font-bold text-amber-600'>{data.price}</span>
+									<span className='text-lg text-gray-600'>сом</span>
+								</div>
+								<button
+									onClick={handleBuy}
+									className='px-4 py-2 text-sm bg-gradient-to-r from-orange-500 to-red-500 
+									text-white hover:from-orange-600 hover:to-red-600 
+									transition-all duration-200 shadow-sm hover:shadow-md 
+									flex items-center gap-2'>
+									<svg
+										className='w-4 h-4'
+										fill='none'
+										stroke='currentColor'
+										viewBox='0 0 24 24'
+										xmlns='http://www.w3.org/2000/svg'>
+										<path
+											strokeLinecap='round'
+											strokeLinejoin='round'
+											strokeWidth={2}
+											d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
+										/>
+									</svg>
+									{t('addToCart')}
+								</button>
+							</div>
 
-						<div className='flex items-center justify-between'>
-							<span className='text-2xl font-bold text-primary'>{data.price} сом</span>
-							<Button onClick={handleBuy} className='px-8'>
-								{t('addToCart')}
-							</Button>
+							{/* Описание */}
+							<p className='text-gray-600 leading-relaxed'>{data.summery}</p>
+
+							{/* Цена и кнопка для десктопа */}
+							<div className='hidden lg:block space-y-4'>
+								<div className='flex items-center gap-2'>
+									<span className='text-3xl font-bold text-amber-600'>{data.price}</span>
+									<span className='text-xl text-gray-600'>сом</span>
+								</div>
+
+								<button
+									onClick={handleBuy}
+									className='w-full sm:w-auto px-6 py-3 text-base bg-gradient-to-r from-orange-500 to-red-500 
+									text-white hover:from-orange-600 hover:to-red-600 
+									transition-all duration-200 shadow-sm hover:shadow-md 
+									flex items-center justify-center gap-2'>
+									<svg
+										className='w-5 h-5'
+										fill='none'
+										stroke='currentColor'
+										viewBox='0 0 24 24'
+										xmlns='http://www.w3.org/2000/svg'>
+										<path
+											strokeLinecap='round'
+											strokeLinejoin='round'
+											strokeWidth={2}
+											d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
+										/>
+									</svg>
+									{t('addToCart')}
+								</button>
+							</div>
+
+							{/* Дополнительная информация */}
+							<div className='grid grid-cols-2 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-gray-100'>
+								<div className='bg-amber-50 p-3 sm:p-4 text-center'>
+									<div className='text-amber-700 font-medium text-sm sm:text-base'>100% Натуральный</div>
+									<div className='text-xs sm:text-sm text-gray-600'>Без добавок</div>
+								</div>
+								<div className='bg-amber-50 p-3 sm:p-4 text-center'>
+									<div className='text-amber-700 font-medium text-sm sm:text-base'>Быстрая доставка</div>
+									<div className='text-xs sm:text-sm text-gray-600'>По всей стране</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

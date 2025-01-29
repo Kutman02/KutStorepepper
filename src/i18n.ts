@@ -28,6 +28,7 @@ const initI18n = () => {
 				react: {
 					useSuspense: false,
 				},
+				lng: 'ru', // язык по умолчанию
 			});
 	}
 };

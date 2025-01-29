@@ -51,8 +51,7 @@ const ProductCategory = ({ list }: ProductCategoryType) => {
 			{list.map((item) => (
 				<div
 					key={item.id}
-					className='group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300'
-				>
+					className='group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300'>
 					<Link href={routes.product(item.id)} className='block relative'>
 						<div className='aspect-square relative overflow-hidden bg-orange-50'>
 							<Image
@@ -64,13 +63,6 @@ const ProductCategory = ({ list }: ProductCategoryType) => {
 							<div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 						</div>
 						<div className='p-4'>
-							<div className='flex items-center justify-between mb-2'>
-								<div className='flex items-center gap-2'>
-									<Image src={score} alt='score' width={16} height={16} />
-									<span className='text-sm text-gray-600'>4.5</span>
-								</div>
-								<Image src={interest} alt='interest' width={16} height={16} />
-							</div>
 							<h3 className='text-gray-800 font-medium line-clamp-2 min-h-[2.5rem] group-hover:text-primary transition-colors duration-200'>
 								{item.title}
 							</h3>
@@ -84,15 +76,13 @@ const ProductCategory = ({ list }: ProductCategoryType) => {
 									className='px-4 py-2 text-sm bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full 
                                     hover:from-orange-600 hover:to-red-600 transform hover:-translate-y-0.5 
                                     active:translate-y-0 transition-all duration-200 shadow-sm 
-                                    hover:shadow-md flex items-center gap-2'
-								>
+                                    hover:shadow-md flex items-center gap-2'>
 									<svg
 										className='w-4 h-4'
 										fill='none'
 										stroke='currentColor'
 										viewBox='0 0 24 24'
-										xmlns='http://www.w3.org/2000/svg'
-									>
+										xmlns='http://www.w3.org/2000/svg'>
 										<path
 											strokeLinecap='round'
 											strokeLinejoin='round'
