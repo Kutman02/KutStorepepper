@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import productsJson from './data/products.json';
-import { StaticImageData } from 'next/image';
+//import { StaticImageData } from 'next/image';
 import Barberry1 from 'public/images/products/Barberry1.png';
 import Barberry2 from 'public/images/products/Barberry2.png';
 import BlackCardamom1 from 'public/images/products/Black-Cardamom1.png';
@@ -68,6 +69,7 @@ interface IProduct {
 // Экспортируем данные из JSON
 export const productsData: IProduct[] = productsJson.productsData;
 
+/* eslint-disable no-unused-vars */
 export const productsDataOriginal = [
 	{
 		id: 'sp-10',
