@@ -21,7 +21,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 	const { t } = useTranslation();
 	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
-	const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+	const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
 	const [isFilterOpen, setIsFilterOpen] = useState(false);
 	const [sortBy, setSortBy] = useState<'price-asc' | 'price-desc' | 'name'>('name');
 
@@ -30,7 +30,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 	// Если products не определен, показываем загрузку
 	if (products === undefined) {
 		return (
-			<div className="min-h-screen flex items-center justify-center">
+			<div className='min-h-screen flex items-center justify-center'>
 				<div>Загрузка...</div>
 			</div>
 		);
@@ -39,15 +39,15 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 	// Если products пустой массив, показываем сообщение
 	if (products.length === 0) {
 		return (
-			<div className="min-h-screen flex items-center justify-center">
+			<div className='min-h-screen flex items-center justify-center'>
 				<div>Товары не найдены</div>
 			</div>
 		);
 	}
 
 	// Фильтруем продукты по категории
-	const filteredProducts = category 
-		? products.filter(product => product.category.toLowerCase() === category.toLowerCase())
+	const filteredProducts = category
+		? products.filter((product) => product.category.toLowerCase() === category.toLowerCase())
 		: products;
 
 	// Фильтрация данных
@@ -72,7 +72,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 	// Сброс фильтров
 	const resetFilters = () => {
 		setSearchTerm('');
-		setPriceRange({ min: 0, max: 1000 });
+		setPriceRange({ min: 0, max: 5000 });
 		setSortBy('name');
 		setIsFilterOpen(false);
 	};
@@ -96,8 +96,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 							className='flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 
 							text-white rounded-full hover:from-orange-600 hover:to-red-600 
 							transform hover:-translate-y-0.5 active:translate-y-0 
-							transition-all duration-200 shadow-sm hover:shadow-md'
-						>
+							transition-all duration-200 shadow-sm hover:shadow-md'>
 							<Image src={filter} alt='filter' width={18} height={18} className='opacity-90' />
 							<span className='text-sm font-medium'>{t('FilterProducts.filter')}</span>
 						</button>
@@ -119,8 +118,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 									<h3 className='text-lg font-medium'>{t('FilterProducts.filter')}</h3>
 									<button
 										onClick={() => setIsFilterOpen(false)}
-										className='p-2 hover:bg-gray-100 rounded-full transition-colors'
-									>
+										className='p-2 hover:bg-gray-100 rounded-full transition-colors'>
 										<svg className='w-5 h-5' viewBox='0 0 20 20' fill='currentColor'>
 											<path
 												fillRule='evenodd'
@@ -137,8 +135,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 											value={sortBy}
 											onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
 											className='w-full px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm 
-											focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
-										>
+											focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500'>
 											<option value='name'>{t('FilterProducts.sortByName')}</option>
 											<option value='price-asc'>{t('FilterProducts.priceLowToHigh')}</option>
 											<option value='price-desc'>{t('FilterProducts.priceHighToLow')}</option>
@@ -170,8 +167,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 									onClick={resetFilters}
 									className='w-full px-4 py-2 text-sm text-orange-500 hover:text-orange-600 
 									hover:bg-orange-50 rounded-full transition-all duration-200 
-									border border-orange-200 hover:border-orange-300'
-								>
+									border border-orange-200 hover:border-orange-300'>
 									{t('FilterProducts.resetFilters')}
 								</button>
 							</div>
@@ -189,8 +185,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 							value={sortBy}
 							onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
 							className='w-full px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm 
-							focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500'
-						>
+							focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500'>
 							<option value='name'>{t('FilterProducts.sortByName')}</option>
 							<option value='price-asc'>{t('FilterProducts.priceLowToHigh')}</option>
 							<option value='price-desc'>{t('FilterProducts.priceHighToLow')}</option>
@@ -227,7 +222,7 @@ const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	try {
 		const products = await getProducts();
-		
+
 		return {
 			props: {
 				products,
