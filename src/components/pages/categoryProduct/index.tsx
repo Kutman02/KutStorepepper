@@ -7,20 +7,51 @@ import Input from '@src/components/base/input';
 import ProductCategory from './ProductCategory';
 import PriceRange from './PriceRange';
 import { routes } from '@src/constants/routes';
+import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
+import { getProducts } from '@src/api/product';
+import { Product } from '@src/interfaces/product';
 
-type CategoryProductType = {
-	data: { id: string; title: string; images: string[]; price: number }[];
-};
+interface CategoryProductProps {
+	products: Product[];
+	category?: string;
+}
 
-const CategoryProduct = ({ data }: CategoryProductType) => {
+const CategoryProduct = ({ products, category }: CategoryProductProps) => {
 	const { t } = useTranslation();
+	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
 	const [isFilterOpen, setIsFilterOpen] = useState(false);
 	const [sortBy, setSortBy] = useState<'price-asc' | 'price-desc' | 'name'>('name');
 
+	console.log('CategoryProduct render:', { products, category });
+
+	// Если products не определен, показываем загрузку
+	if (products === undefined) {
+		return (
+			<div className="min-h-screen flex items-center justify-center">
+				<div>Загрузка...</div>
+			</div>
+		);
+	}
+
+	// Если products пустой массив, показываем сообщение
+	if (products.length === 0) {
+		return (
+			<div className="min-h-screen flex items-center justify-center">
+				<div>Товары не найдены</div>
+			</div>
+		);
+	}
+
+	// Фильтруем продукты по категории
+	const filteredProducts = category 
+		? products.filter(product => product.category.toLowerCase() === category.toLowerCase())
+		: products;
+
 	// Фильтрация данных
-	const filteredData = data.filter((item) => {
+	const filteredData = filteredProducts.filter((item) => {
 		const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
 		const matchesPrice = item.price >= priceRange.min && item.price <= priceRange.max;
 		return matchesSearch && matchesPrice;
@@ -72,7 +103,7 @@ const CategoryProduct = ({ data }: CategoryProductType) => {
 						</button>
 					</div>
 					<p className='text-sm text-gray-600'>
-						{t('FilterProducts.Showing')} {sortedData.length} {t('FilterProducts.of')} {data.length}{' '}
+						{t('FilterProducts.Showing')} {sortedData.length} {t('FilterProducts.of')} {filteredProducts.length}{' '}
 						{t('FilterProducts.product')}
 					</p>
 				</div>
@@ -191,6 +222,27 @@ const CategoryProduct = ({ data }: CategoryProductType) => {
 			</div>
 		</div>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+	try {
+		const products = await getProducts();
+		
+		return {
+			props: {
+				products,
+				category: query.category || null,
+			},
+		};
+	} catch (error) {
+		console.error('Error fetching products:', error);
+		return {
+			props: {
+				products: [],
+				category: null,
+			},
+		};
+	}
 };
 
 export default CategoryProduct;

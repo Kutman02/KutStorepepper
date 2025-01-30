@@ -1,32 +1,31 @@
-// Импортируем тип StaticImageData для работы с изображениями в Next.js
-import { StaticImageData } from 'next/image';
-
-// Интерфейс для типизации данных ответа API для списка продуктов
 export interface ProductsDataApiResponse {
-	// Массив объектов, каждый из которых представляет собой продукт
-	list: ProductDataApiResponse[]; // Список продуктов
+	list: ProductDataApiResponse[];
 }
 
-// Интерфейс для типизации данных ответа API для отдельного продукта
 export interface ProductDataApiResponse {
-	// Уникальный идентификатор продукта
-	id: string;
-
-	// Название продукта
+	id: number;
 	title: string;
-
-	// Цена продукта
+	images: string[];
 	price: number;
+	score: number;
+	category: string;
+	summary: string;
+	description: string;
+}
 
-	// Массив изображений продукта
-	images: StaticImageData[]; // Список изображений с типом StaticImageData
+// Если нужны дополнительные типы, их тоже можно добавить здесь
+export interface ProductDescription {
+	title: string;
+	content: string;
+}
 
-	// Суммарное описание или дополнительные характеристики продукта
+export interface Product {
+	id: string;
+	title: string;
+	price: number;
+	score: number;
+	images: string[];
+	category: string;
 	summery: string;
-
-	// Описание продукта: массив объектов, каждый объект содержит заголовок и описание
-	description: {
-		title: string; // Заголовок описания (например, "Особенности продукта")
-		content: string; // Содержимое описания (например, "Большой экран и мощный процессор")
-	}[]; // Массив объектов, представляющих описание продукта
+	description: ProductDescription[];
 }

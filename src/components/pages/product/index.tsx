@@ -7,17 +7,24 @@ import ProductTabs from './productTabs'; // Импортируем компон�
 import { updateGlobalSlice } from '@src/store/globalSlice'; // Импортируем экшн для обновления состояния корзины
 import { useTranslation } from 'react-i18next'; // Импортируем хук для перевода текста
 
-type ProductData = {
-	id: string;
-	images: string[];
-	title: string;
-	summery: string;
-	price: number;
-	description: Array<{ title: string; content: string }>;
+type ProductContentProps = {
+	data: {
+		id: string;
+		title: string;
+		price: number;
+		score: number;
+		images: string[];
+		category: string;
+		summery: string;
+		description: Array<{
+			title: string;
+			content: string;
+		}>;
+	};
 };
 
 // Основной компонент для отображения контента страницы товара
-const ProductContent = ({ data }: { data: ProductData }) => {
+const ProductContent = ({ data }: ProductContentProps) => {
 	const { t } = useTranslation(); // Инициализация хука для перевода
 	const router = useRouter(); // Хук для работы с маршрутом
 	const dispatch = useDispatch(); // Хук для отправки экшенов в Redux

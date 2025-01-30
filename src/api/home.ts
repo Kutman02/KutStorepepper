@@ -1,5 +1,5 @@
 // Импортируем данные для главной страницы из локальной базы данных.
-import { homeData } from '@src/services/database/homeData';
+import { getHomeData } from '@src/services/database/homeData';
 
 // Определяем тип данных, которые возвращаются для главной страницы.
 type DataType = {
@@ -19,15 +19,12 @@ type Response = {
 
 // Функция для получения данных главной страницы.
 // Она возвращает Promise с объектом типа `Response`.
-export const getHomeData = () => {
-	return new Promise<Response>((resolve) => {
-		// Формируем успешный результат, используя данные из `homeData`.
-		const result: Response = {
-			data: homeData, // Данные главной страницы.
-			status: 200, // Успех.
-		};
-
-		// Возвращаем результат, завершая Promise.
-		resolve(result);
-	});
+export const getHome = async () => {
+	try {
+		const data = await getHomeData();
+		return data;
+	} catch (error) {
+		console.error('Error in getHome:', error);
+		return null;
+	}
 };

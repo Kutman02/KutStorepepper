@@ -1,6 +1,6 @@
-// Импортируем типы данных, используемых для работы с продуктами.
+import fs from 'fs';
+import path from 'path';
 import { ProductsDataApiResponse } from '@src/interfaces/product';
-import { productsData } from '@src/services/database/products';
 
 // Определяем тип ответа, возвращаемого функцией.
 // Поле `data` содержит список продуктов (array), которые соответствуют категории.
@@ -10,20 +10,42 @@ type Response = {
 	status: 200 | 404; // HTTP коды статуса.
 };
 
-// Функция для получения данных о продуктах по категории.
-// Принимает название категории (`name`) в качестве аргумента.
 export const getCategoryData = (name: string) => {
-	return new Promise<Response>((resolve) => {
-		// Фильтруем массив продуктов, чтобы выбрать только те, которые принадлежат указанной категории.
-		const products: Response['data'] = productsData.filter((product) => product.category === name);
+	return new Promise<Response>((resolve, reject) => {
+		// Путь к файлу product.json
+		const filePath = path.join(__dirname, 'services/database/data/product.json');
 
-		// Формируем успешный ответ, если данные найдены.
-		const result: Response = {
-			data: products, // Список продуктов выбранной категории.
-			status: 200, // Успех.
-		};
+		// Чтение JSON файла
+		fs.readFile(filePath, 'utf-8', (err, data) => {
+			if (err) {
+				console.error('Error reading the file:', err);
+				reject({ data: [], status: 500 }); // Возвращаем ошибку при чтении файла
+				return;
+			}
 
-		// Завершаем Promise, возвращая результат.
-		resolve(result);
+			try {
+				// Преобразуем данные из JSON в объект
+				const productsData = JSON.parse(data);
+
+				if (!Array.isArray(productsData)) {
+					throw new Error('Data is not in expected array format');
+				}
+
+				// Фильтруем массив продуктов, чтобы выбрать только те, которые принадлежат указанной категории.
+				const products: Response['data'] = productsData.filter((product) => product.category === name);
+
+				// Формируем успешный ответ, если данные найдены.
+				const result: Response = {
+					data: products, // Список продуктов выбранной категории.
+					status: 200, // Успех.
+				};
+
+				// Завершаем Promise, возвращая результат.
+				resolve(result);
+			} catch (parseError) {
+				console.error('Error parsing JSON:', parseError);
+				reject({ data: [], status: 500 }); // Ошибка парсинга JSON
+			}
+		});
 	});
 };
